@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varia Vetera – Musikalische Märchen, Märchenhafte Musik</title>
+    <meta name="description" content="Das Trio Varia Vetera verbindet anspruchsvolle Kammermusik mit wortgetreu erzählten Märchen aus aller Welt. Blockflöte, Cembalo und Kontrabass.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Music&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           CSS CUSTOM PROPERTIES
+           ═══════════════════════════════════════════ */
+        :root {
+            --color-bg-deep:    #1a2a2e;
+            --color-bg:         #243438;
+            --color-bg-card:    #2d3e42;
+            --color-bg-lighter: #3a5058;
+            --color-accent:     #8fb8a0;
+            --color-accent-warm:#c9a96e;
+            --color-text:       #e8e0d4;
+            --color-text-muted: #a0998e;
+            --color-text-heading: #f0ebe3;
+            --color-divider:    rgba(143, 184, 160, 0.2);
+
+            --font-display: 'Cormorant Garamond', 'Georgia', serif;
+            --font-body: 'Lora', 'Georgia', serif;
+
+            --max-width: 960px;
+            --section-padding: clamp(4rem, 10vw, 8rem);
+        }
+
+        /* ═══════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg-deep);
+            color: var(--color-text);
+            line-height: 1.75;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--color-accent-warm); }
+
+        /* ═══════════════════════════════════════════
+           TYPOGRAPHY
+           ═══════════════════════════════════════════ */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            color: var(--color-text-heading);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .section-heading {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 0.5em;
+            letter-spacing: 0.03em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           DECORATIVE ELEMENTS
+           ═══════════════════════════════════════════ */
+        .ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2.5rem auto;
+            max-width: 280px;
+        }
+
+        .ornament::before,
+        .ornament::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        }
+
+        .ornament-symbol {
+            color: var(--color-accent);
+            font-size: 1.4rem;
+            opacity: 0.7;
+        }
+
+        /* ── Musical Notes Circle ── */
+        .notes-circle {
+            position: relative;
+            width: clamp(320px, 55vw, 520px);
+            height: clamp(320px, 55vw, 520px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notes-circle svg.notes-ring {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            animation: rotateNotes 90s linear infinite;
+            opacity: 0.45;
+        }
+
+        .notes-circle svg.notes-ring--inner {
+            animation: rotateNotesReverse 70s linear infinite;
+            opacity: 0.3;
+        }
+
+        .notes-circle-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        @keyframes rotateNotes {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateNotesReverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        /* Small ornamental notes circle wrapping section headings */
+        .section-heading-wrap {
+            position: relative;
+            width: clamp(200px, 40vw, 320px);
+            height: clamp(200px, 40vw, 320px);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-heading-wrap .notes-ring-small {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            animation: rotateNotes 60s linear infinite;
+            opacity: 0.4;
+        }
+
+        .section-heading-wrap .section-heading {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 0;
+        }
+
+        .notes-circle-small {
+            display: none; /* hide any leftover old ones */
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+           ═══════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 42, 46, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-divider);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text-heading);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.04em;
+            position: relative;
+            padding: 0.25em 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-text-heading);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile hamburger */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/forest_bg.jpg') center/cover no-repeat;
+            filter: brightness(0.35) saturate(0.7);
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(26, 42, 46, 0.3) 0%,
+                rgba(26, 42, 46, 0.1) 40%,
+                rgba(26, 42, 46, 0.5) 80%,
+                rgba(26, 42, 46, 1) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-ensemble-name {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--color-accent-warm);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-text-muted);
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 550px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Next concert banner */
+        .hero-concert {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(143, 184, 160, 0.12);
+            border: 1px solid rgba(143, 184, 160, 0.25);
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            animation: fadeInUp 1.2s ease-out 0.4s both;
+        }
+
+        .hero-concert-label {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+        }
+
+        .hero-concert-details {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-text-heading);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+            opacity: 0.5;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-text-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTIONS
+           ═══════════════════════════════════════════ */
+        .section {
+            padding: var(--section-padding) 2rem;
+        }
+
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section--alt {
+            background: var(--color-bg);
+        }
+
+        /* ═══════════════════════════════════════════
+           KONZEPT SECTION
+           ═══════════════════════════════════════════ */
+        .konzept-text {
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.05rem;
+        }
+
+        .konzept-text p + p {
+            margin-top: 1.25rem;
+        }
+
+        .konzept-instruments {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .instrument {
+            text-align: center;
+        }
+
+        .instrument-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .instrument-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-text-heading);
+        }
+
+        /* ═══════════════════════════════════════════
+           PROGRAMME SECTION
+           ═══════════════════════════════════════════ */
+        .programme-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .programm-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-divider);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .programm-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-warm));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .programm-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(143, 184, 160, 0.35);
+        }
+
+        .programm-card:hover::before {
+            opacity: 1;
+        }
+
+        .programm-number {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .programm-title {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-style: italic;
+            color: var(--color-text-heading);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .programm-desc {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1.25rem;
+            line-height: 1.65;
+        }
+
+        .programm-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .programm-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .programm-meta svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--color-accent);
+            fill: none;
+        }
+
+        /* Full-width card for the main program */
+        .programm-card--featured {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--color-bg-card), var(--color-bg-lighter));
+        }
+
+        /* ═══════════════════════════════════════════
+           ENSEMBLE SECTION
+           ═══════════════════════════════════════════ */
+        .ensemble-photo-container {
+            max-width: 720px;
+            margin: 0 auto 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--color-divider);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .ensemble-members {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .member {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .member-name {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--color-text-heading);
+            margin-bottom: 0.25rem;
+        }
+
+        .member-role {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            font-size: 0.92rem;
+            color: var(--color-text-muted);
+            line-height: 1.65;
+        }
+
+        .member-bio-placeholder {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            opacity: 0.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           AKTUELLES SECTION
+           ═══════════════════════════════════════════ */
+        .aktuelles-content {
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .next-concert {
+            background: linear-gradient(135deg, rgba(143, 184, 160, 0.1), rgba(201, 169, 110, 0.08));
+            border: 1px solid rgba(143, 184, 160, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .next-concert-label {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .next-concert-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .next-concert-details {
+            font-size: 1.05rem;
+            color: var(--color-text);
+        }
+
+        .next-concert-details strong {
+            color: var(--color-accent-warm);
+        }
+
+        /* ═══════════════════════════════════════════
+           PRESSE SECTION
+           ═══════════════════════════════════════════ */
+        .press-quote {
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .press-quote blockquote {
+            font-family: var(--font-display);
+            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+            font-style: italic;
+            line-height: 1.7;
+            color: var(--color-text-heading);
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .press-quote blockquote::before {
+            content: '„';
+            font-size: 4rem;
+            color: var(--color-accent);
+            opacity: 0.4;
+            position: absolute;
+            top: -0.5rem;
+            left: -0.5rem;
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+
+        .press-source {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+
+        .press-source a {
+            color: var(--color-accent);
+        }
+
+        .press-full-text {
+            max-width: 680px;
+            margin: 2.5rem auto 0;
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            text-align: left;
+            line-height: 1.8;
+            border-top: 1px solid var(--color-divider);
+            padding-top: 2rem;
+        }
+
+        .press-full-text p + p {
+            margin-top: 1rem;
+        }
+
+        .press-toggle {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-accent);
+            cursor: pointer;
+            background: none;
+            border: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .press-toggle:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .press-full-text[hidden] {
+            display: none;
+        }
+
+        /* ═══════════════════════════════════════════
+           KONTAKT / FOOTER
+           ═══════════════════════════════════════════ */
+        .footer {
+            background: var(--color-bg-deep);
+            border-top: 1px solid var(--color-divider);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .footer-heading {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtext {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-accent);
+            fill: none;
+        }
+
+        .contact-item a {
+            font-size: 1.05rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-divider);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            opacity: 0.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(26, 42, 46, 0.97);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--color-divider);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-toggle.open span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .nav-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
+            .nav-toggle.open span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .programme-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ensemble-members {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-concert {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .konzept-instruments {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 16px; }
+            .section { padding: 3rem 1.25rem; }
+            .nav-inner { padding: 0 1.25rem; }
+            .programm-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">Varia Vetera</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#konzept">Konzept</a></li>
+                <li><a href="#programme">Programme</a></li>
+                <li><a href="#ensemble">Das Ensemble</a></li>
+                <li><a href="#aktuelles">Aktuelles</a></li>
+                <li><a href="#presse">Presse</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-ensemble-name">Varia Vetera</p>
+
+            <div class="notes-circle">
+                <!-- Outer ring of musical notes using Noto Music font -->
+                <svg class="notes-ring" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <path id="outerRing" d="M 250,250 m -215,0 a 215,215 0 1,1 430,0 a 215,215 0 1,1 -430,0" fill="none"/>
+                    </defs>
+                    <text font-family="'Noto Music', serif" fill="#8fb8a0" font-size="30" letter-spacing="8">
+                        <textPath href="#outerRing">&#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E;</textPath>
+                    </text>
+                </svg>
+                <!-- Inner ring - counter-clockwise via CSS -->
+                <svg class="notes-ring notes-ring--inner" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <path id="innerRing" d="M 250,250 m -175,0 a 175,175 0 1,0 350,0 a 175,175 0 1,0 -350,0" fill="none"/>
+                    </defs>
+                    <text font-family="'Noto Music', serif" fill="#8fb8a0" font-size="22" letter-spacing="6" opacity="0.7">
+                        <textPath href="#innerRing">&#x266B; &#x266A; &#x1D11E; &#x266C; &#x266A; &#x266B; &#x1D11E; &#x266C; &#x266A; &#x266B; &#x1D11E; &#x266C; &#x266A; &#x266B; &#x1D11E; &#x266C;</textPath>
+                    </text>
+                </svg>
+
+                <div class="notes-circle-content">
+                    <h1 class="hero-title">
+                        Musikalische Märchen&nbsp;–<br>
+                        <em>Märchenhafte Musik</em>
+                    </h1>
+                    <p class="hero-tagline">
+                        Ein Konzertabend, der anspruchsvolle Kammermusik
+                        mit wortgetreu erzählten Märchen aus aller Welt verbindet
+                    </p>
+                </div>
+            </div>
+
+            <div class="hero-concert">
+                <span class="hero-concert-label">Nächstes Konzert</span>
+                <span class="hero-concert-details">
+                    Sonntag, 3. Mai 2026 · Barockkirche Zwillbrock · 16:30 Uhr
+                </span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         KONZEPT
+         ═══════════════════════════════════════════ -->
+    <section class="section section--alt" id="konzept">
+        <div class="section-inner reveal">
+            <div class="section-heading-wrap">
+                <svg class="notes-ring-small" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs><path id="secRing1" d="M 150,150 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" fill="none"/></defs>
+                    <text font-family="'Noto Music', serif" fill="#8fb8a0" font-size="22" letter-spacing="4">
+                        <textPath href="#secRing1">&#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B;</textPath>
+                    </text>
+                </svg>
+                <h2 class="section-heading">Das Konzept</h2>
+            </div>
+            <div class="konzept-text">
+                <p>
+                    Bei den Konzerten von Varia Vetera erklingen Musikkompositionen aus verschiedenen 
+                    Zeit- und Stilepochen – von frühbarocker Musik bis hin zu Jazzstandards –, adaptiert 
+                    für Blockflöte, Cembalo und Kontrabass.
+                </p>
+                <p>
+                    Das Besondere: Die Musik wird thematisch passend zu den erzählten Märchen gewählt. 
+                    So entsteht eine musikalische Märchenreise, die Zeit zum Nachdenken, Lachen und 
+                    Träumen verspricht.
+                </p>
+            </div>
+            <div class="konzept-instruments">
+                <div class="instrument">
+                    <div class="instrument-icon" style="font-family:'Noto Music',serif">&#x1D11E;</div>
+                    <div class="instrument-name">Blockflöte</div>
+                </div>
+                <div class="instrument">
+                    <div class="instrument-icon" style="font-family:'Noto Music',serif">&#x266B;</div>
+                    <div class="instrument-name">Cembalo</div>
+                </div>
+                <div class="instrument">
+                    <div class="instrument-icon" style="font-family:'Noto Music',serif">&#x266A;</div>
+                    <div class="instrument-name">Kontrabass</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROGRAMME
+         ═══════════════════════════════════════════ -->
+    <section class="section" id="programme">
+        <div class="section-inner reveal">
+            <div class="section-heading-wrap">
+                <svg class="notes-ring-small" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs><path id="secRing2" d="M 150,150 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" fill="none"/></defs>
+                    <text font-family="'Noto Music', serif" fill="#8fb8a0" font-size="22" letter-spacing="4">
+                        <textPath href="#secRing2">&#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B;</textPath>
+                    </text>
+                </svg>
+                <h2 class="section-heading">Programme</h2>
+            <p class="section-subtitle">Frei wählbar zwischen vier thematisch verschiedenen Konzerten</p>
+
+            <div class="programme-grid">
+                <!-- Program 1 -->
+                <div class="programm-card">
+                    <div class="programm-number">Trio-Programm I</div>
+                    <h3 class="programm-title">„…singendes Holz…"</h3>
+                    <p class="programm-desc">
+                        Märchen über Flötenmusik, begleitet von Musik aus vier Jahrhunderten.
+                    </p>
+                    <div class="programm-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            60 Min.
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            Trio
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="programm-card">
+                    <div class="programm-number">Trio-Programm II</div>
+                    <h3 class="programm-title">„…vom Leben belehrt…"</h3>
+                    <p class="programm-desc">
+                        Märchen übers Weise-Werden und Weise-Sein, mit Musik aus vier Jahrhunderten.
+                    </p>
+                    <div class="programm-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            60 Min.
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            Trio
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Program 3 - Featured -->
+                <div class="programm-card programm-card--featured">
+                    <div class="programm-number">Trio-Programm III · Abendfüllend</div>
+                    <h3 class="programm-title">„…musikalische Märchen – märchenhafte Musik…"</h3>
+                    <p class="programm-desc">
+                        Das große Programm, das Musik in Beziehung setzt zu Märchen aus verschiedenen 
+                        Ländern – Märchen, die selber von Musik, von ihrer Kraft und ihrem Zauber erzählen.
+                    </p>
+                    <div class="programm-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            90 Min. mit Pause
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            Trio
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="programm-card" style="grid-column: 1 / -1;">
+                    <div class="programm-number">Duo-Programm</div>
+                    <h3 class="programm-title">„…und alle konnten sehen, dass das eine Frau war…"</h3>
+                    <p class="programm-desc">
+                        Märchen über starke Frauen, begleitet von Musik von Komponistinnen aus Barock und Moderne.
+                    </p>
+                    <div class="programm-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            60 Min.
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            Duo (Cembalo &amp; Blockflöte)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         DAS ENSEMBLE
+         ═══════════════════════════════════════════ -->
+    <section class="section section--alt" id="ensemble">
+        <div class="section-inner reveal">
+            <h2 class="section-heading">Das Ensemble</h2>
+            </div>
+
+            <div class="ensemble-photo-container">
+                <img src="images/ensemble.jpg" alt="Das Trio Varia Vetera: Hiltrud Erning (Blockflöte), Josef Gebker (Cembalo) und Stefan Herkenrath (Kontrabass)" loading="lazy">
+            </div>
+
+            <div class="ensemble-members">
+                <div class="member">
+                    <h3 class="member-name">Hiltrud Erning</h3>
+                    <p class="member-role">Blockflöten, Gesang &amp; Märchenerzählung</p>
+                    <p class="member-bio-placeholder">Biografie folgt</p>
+                </div>
+                <div class="member">
+                    <h3 class="member-name">Josef Gebker</h3>
+                    <p class="member-role">Cembalo &amp; Arrangement</p>
+                    <p class="member-bio-placeholder">Biografie folgt</p>
+                </div>
+                <div class="member">
+                    <h3 class="member-name">Stefan Herkenrath</h3>
+                    <p class="member-role">Kontrabass</p>
+                    <p class="member-bio-placeholder">Biografie folgt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         AKTUELLES
+         ═══════════════════════════════════════════ -->
+    <section class="section" id="aktuelles">
+        <div class="section-inner reveal">
+            <div class="section-heading-wrap">
+                <svg class="notes-ring-small" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs><path id="secRing3" d="M 150,150 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" fill="none"/></defs>
+                    <text font-family="'Noto Music', serif" fill="#8fb8a0" font-size="22" letter-spacing="4">
+                        <textPath href="#secRing3">&#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B;</textPath>
+                    </text>
+                </svg>
+                <h2 class="section-heading">Aktuelles</h2>
+            </div>
+
+            <div class="aktuelles-content">
+                <p>
+                    Nach einer längeren Pause sind wir zurück auf der Bühne – 
+                    voller Vorfreude auf neue Auftritte und gespannt auf Ihre Anfragen.
+                </p>
+
+                <div class="next-concert">
+                    <p class="next-concert-label">Nächstes Konzert</p>
+                    <h3 class="next-concert-title">Barockkirche Zwillbrock</h3>
+                    <p class="next-concert-details">
+                        <strong>Sonntag, 3. Mai 2026</strong> · Beginn 16:30 Uhr
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PRESSE
+         ═══════════════════════════════════════════ -->
+    <section class="section section--alt" id="presse">
+        <div class="section-inner reveal">
+            <div class="section-heading-wrap">
+                <svg class="notes-ring-small" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs><path id="secRing4" d="M 150,150 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" fill="none"/></defs>
+                    <text font-family="'Noto Music', serif" fill="#8fb8a0" font-size="22" letter-spacing="4">
+                        <textPath href="#secRing4">&#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B; &#x266C; &#x1D11E; &#x266A; &#x266B;</textPath>
+                    </text>
+                </svg>
+                <h2 class="section-heading">Pressestimmen</h2>
+            </div>
+
+            <div class="press-quote">
+                <blockquote>
+                    Das Publikum konnte erleben, wie gut Märchen und Musik zusammenpassten 
+                    und gemeinsam die Kraft entwickelten, das eigene Herz zu berühren.
+                </blockquote>
+                <p class="press-source">
+                    Pressestelle der Stadt Ahaus, 6. Mai 2024 ·
+                    <a href="https://www.presse-service.de/data.aspx/static/1156593.html" target="_blank" rel="noopener">
+                        Vollständigen Artikel lesen&nbsp;→
+                    </a>
+                </p>
+
+                <button class="press-toggle" id="pressToggle" onclick="togglePress()">
+                    Mehr aus dem Artikel lesen ↓
+                </button>
+
+                <div class="press-full-text" id="pressText" hidden>
+                    <p>
+                        <strong>„Musik und Märchen" – beeindruckende Programmpremiere in der Tonhalle Ahaus</strong>
+                    </p>
+                    <p>
+                        Märchen, die vom Zauber und der Kraft der Musik erzählen, melancholisch, magisch 
+                        oder auch überraschend pfiffig. Musik, die für sich selbst steht, aber doch in 
+                        Verbindung mit den erzählten Märchen neue ungewohnte Assoziationen zulässt. 
+                        Mit diesen Elementen überzeugte das Trio „Varia Vetera" am Freitagabend bei 
+                        der Premiere ihres Programmes „Musikalische Märchen – märchenhafte Musik".
+                    </p>
+                    <p>
+                        Zu Gehör gebracht wurde authentisch gespielte, ausdrucksstarke und virtuose 
+                        Musik aus Frühbarock und Barock, außerdem Adaptionen argentinischer 
+                        „Nuevo Tango-Musik" und Improvisationen über Jazz-Standards.
+                    </p>
+                    <p>
+                        An mehreren Stellen des Programmes legte Hiltrud Erning ihre Blockflöte zur Seite, 
+                        machte die paar Schritte von der Bühne herunter und nahm das Publikum frei erzählend 
+                        mit in Sumpflandschaften, Kerker und Paläste und immer wieder zu singenden, 
+                        musizierenden, lauschenden Märchenfiguren aus aller Welt. Dabei setzte sie ganz auf 
+                        die Kraft des gesprochenen Wortes, begleitet durch feine Gestik und Mimik – und 
+                        zog die Zuhörer*innen so in den Bann uralter Weisheit.
+                    </p>
+                    <p>
+                        Insgesamt auf eine ganz besondere Weise beseelt und begeistert freute sich das 
+                        Publikum über eine ausführliche Zugabe. Deren persönliche Begeisterung für Musik 
+                        und Märchen war durchweg spürbar – und steckt hoffentlich auch bei anderen 
+                        Gelegenheiten und an anderen Orten noch viele Menschen an.
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        <em>Quelle: Pressestelle der Stadt Ahaus, 
+                        <a href="https://www.presse-service.de/data.aspx/static/1156593.html" target="_blank" rel="noopener">presse-service.de</a></em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         KONTAKT / FOOTER
+         ═══════════════════════════════════════════ -->
+    <footer class="footer" id="kontakt">
+        <div class="footer-inner">
+            <h2 class="footer-heading">Kontakt</h2>
+            <p class="footer-subtext">
+                Gerne stellen wir Ihnen unsere Angebote näher vor und freuen uns, von Ihnen zu hören.
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <a href="mailto:hiltrud-erning@t-online.de">hiltrud-erning@t-online.de</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <a href="tel:+4925616878321">02561 / 687 83 21</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Varia Vetera · <a href="https://www.varia-vetera.de">www.varia-vetera.de</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════
+         JAVASCRIPT
+         ═══════════════════════════════════════════ -->
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Press article toggle
+        function togglePress() {
+            const text = document.getElementById('pressText');
+            const btn = document.getElementById('pressToggle');
+            if (text.hidden) {
+                text.hidden = false;
+                btn.textContent = 'Weniger anzeigen ↑';
+            } else {
+                text.hidden = true;
+                btn.textContent = 'Mehr aus dem Artikel lesen ↓';
+            }
+        }
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id], footer[id]');
+        const navLinksList = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinksList.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
